@@ -11,7 +11,7 @@ function init () {
 	td11.innerHTML=0;
 }
 
-window.addEventListener("load",maiт,false);
+window.addEventListener("load",main,false);
 function main(){
 	//добавить вызов onrightpress и проч по нажатиям клавиш
 }
