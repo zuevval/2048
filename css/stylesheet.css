@@ -1,0 +1,5 @@
+.table1 th, td{
+	text-align: center;
+	border: none;
+	//border: 1px solid red;
+}
