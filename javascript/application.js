@@ -11,6 +11,7 @@ function init () {
 	td11.innerHTML=0;
 }
 function move (dir, A){
-	console.log("func move (зависит от всех троих)")
+	console.log("func move (зависит от всех троих)");
+	var A1=rotate(A);
 	
 }
