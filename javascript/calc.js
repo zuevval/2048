@@ -44,5 +44,6 @@ function check(A){
 function calc_new_pos(A){
 	console.log("func calc_new_pos (ответственн Глеб)")	
 	//необходимо вывести состояние после хода направо
+	//Глеб мировой староста
 	return A;
 }
