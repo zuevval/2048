@@ -73,7 +73,8 @@ function calc_new_pos(A){
                 }
             }
         }
-        var randPlace=Math.floor(Math.random()*(placeOfNullI.length+1));//рандомный выбор места из списка всех нулей
+	if (placeOfNullI.length<1){return B;}
+        var randPlace=Math.floor(Math.random()*(placeOfNullI.length));//рандомный выбор места из списка всех нулей
         var i=placeOfNullI[randPlace];
         var j=placeOfNullJ[randPlace];
         B[i][j]=n;//присваивание элементу массива с рандомным номером строки и столбца 2 или 4 в зависимости от генерации
