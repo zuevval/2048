@@ -1,10 +1,17 @@
 function move (dir, A){
 	console.log("func move (зависит от всех троих)");
-	var A1=rotate(dir, A);
-	var A2=calc_new_pos(A1);
-	//console.log(A2);
-	var A3=rotate_back(dir, A2);
-	//console.log(A3);
+	if(dir == 0){
+		var A3 = calc_new_pos(A)	
+	}else{
+		if(dir == 1 || dir ==3){
+			var A1 = angle_rotate(A,dir)
+			var A2 = calc_new_pos(A1)
+			var A3 = angle_rotate(A,(dir + 2) % 4)
+		}else{
+			var A1 = line_rotate(A)
+			var A2 = calc_new_pos(A1)
+			var A3 = line_rotate(A2)
+		}
 	draw(A3);
 	var flag=check(A3);
 	if(flag==false){
@@ -12,18 +19,38 @@ function move (dir, A){
 	}
 }
 
-function rotate(dir, A){
-	console.log("func rotate (ответственн Миша)");
-	//необходимо вывести матрицу, повёрнутую по часовой стрелке
-	//повернуть dir раз
-	return A;	
+function line_rotate(A){ //нужен для поворота на 180 (разворота)
+	var A_rotate=[]
+	for(var i = 0; i < 4; i++){
+		A_rotate.push([])
+		for(var p = 0; p < 4; p++){
+			A_rotate[i].push(A[i][3-p])
+		}
+	}
+	return A_rotate
 }
-function rotate_back(dir, A){
-	console.log("func rotate_back (ответственн Миша)");
-	//необходимо вывести матрицу, повёрнутую против часовой стрелки
-	//повернуть dir раз
-	return A;
+
+function angle_rotate(A,dir){
+	var A_rotate=[]
+	if (dir == 1){ // первый поворот для "вверх", второй для "вниз"
+		for(var i = 0; i < 4; i++){
+			A_rotate.push([])
+			for(var p = 0; p < 4; p++){
+				A_rotate.push(A[3-p][i])
+			}
+		}
+	}
+	if (dir == 3){ // первый поворот для "вниз", второй для "вверх"
+		for(var i = 0; i < 4; i++){
+			A_rotate.push([])
+			for(var p = 0; p < 4; p++){
+				A_rotate.push(A[p][3-i])
+			}
+		}
+	}
+	return A_rotate
 }
+
 function check(A){
 	console.log("func check (ответственн Миша)");
 	var T=null;
