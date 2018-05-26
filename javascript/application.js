@@ -2,34 +2,51 @@ function init () {
 	console.log("func init (ответственн Валера)")
 	var A=[];
 	//вставить заполнение двойками в случайных позициях
-	var temp = [0, 1, 2, 3];
+	//var temp = [0, 0, 0, 0];
 	for (var i=0; i<4; i++){
-		A[i]=temp;
+		A[i]=[];
+        for (var j=0; j<4; j++){
+        	A[i][j]=0;
+		}
 	}
-	console.log('A is ' + A);
-	console.log(A);
-	td11.innerHTML=0;
+	for (var i=0; i<2; i++){
+        var ri = Math.floor(Math.random()*4);
+        //console.log(ri);
+        var rj = Math.floor(Math.random()*4);
+        if(A[ri][rj]==2){
+            while (A[ri][rj]!=2){
+                ri = Math.floor(Math.random()*4);
+                rj = Math.floor(Math.random()*4);
+            }
+		}
+		A[ri][rj]=2;
+	}
+	//console.log(A);
+	draw(A);
 }
 
-window.addEventListener("load",main,false);
+/*window.addEventListener("load",main,false);
 function main(){
 	//добавить вызов onrightpress и проч по нажатиям клавиш
-}
+}*/
 
 function onrightpress () {
-	//вставить получение A из таблицы
-	var A=[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]];
-	/*var A=[];
-	for (var i=0; i < 4; i++){
-		for (var j=0; j<4; j++){
-			var current_td =null;
-			switch (10*i+j){
-				case
-			}
-		}
-	}*/
+	//var A=[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]];
+	var A=getMatrix();
 	move (0,A); //ход направо
 }
-function onleftpress() {}
-function ondownress() {}
-function onuppress() {}
+function onleftpress() {
+    //var A=[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]];
+    var A=getMatrix();
+    move (2,A);
+}
+function ondownress() {
+    //var A=[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]];
+    var A=getMatrix();
+    move (3,A);
+}
+function onuppress() {
+    //var A=[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]];
+    var A=getMatrix();
+    move (1,A);
+}

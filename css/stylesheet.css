@@ -3,3 +3,13 @@
 	border: none;
 	/*border: 1px solid red; */
 }
+.buttons {
+	table-layout: fixed;
+}
+.buttons th, td{
+	text-align: center;
+	/*border: 1px solid red;*/
+	width: 20px;
+	height: 20px;
+	/*border: 1px solid red; */
+}
