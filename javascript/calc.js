@@ -1,6 +1,4 @@
 function move (dir, A){
-	console.log(A);
-	//пока считается, что это завершённая функция
 	console.log("func move (зависит от всех троих)");
 	var A1=rotate(dir, A);
 	var A2=calc_new_pos(A1);
@@ -27,7 +25,6 @@ function rotate_back(dir, A){
 	return A;
 }
 function check(A){
-	//console.log(A);
 	console.log("func check (ответственн Миша)");
 	var T=null;
 	var flag=false;
