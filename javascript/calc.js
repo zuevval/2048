@@ -1,33 +1,45 @@
-function move (dir, A){
-	console.log("func move (зависит от всех троих)");
-	if(dir == 0){
-		var A3 = calc_new_pos(A)	
-	}else{
-		if(dir == 1 || dir ==3){
-			var A1 = angle_rotate(A,dir)
-			var A2 = calc_new_pos(A1)
-			var A3 = angle_rotate(A,(dir + 2) % 4)
-		}else{
-			var A1 = line_rotate(A)
-			var A2 = calc_new_pos(A1)
-			var A3 = line_rotate(A2)
-		}
-	draw(A3);
-	var flag=check(A3);
-	if(flag==false){
-		gameover();
-	}
+function move (dir, A) {
+    console.log("func move (зависит от всех троих)");
+    if (dir == 0) {
+        var A3 = calc_new_pos(A);
+        draw(A3);
+    } else {
+        if (dir == 1 || dir == 3) {
+            var A1 = angle_rotate(A, dir)
+            var A2 = calc_new_pos(A1)
+            var A3 = angle_rotate(A, (dir + 2) % 4)
+        } else {
+            var A1 = line_rotate(A)
+            var A2 = calc_new_pos(A1)
+            var A3 = line_rotate(A2)
+        }
+        draw(A3);
+        var flag = check(A3);
+        if (flag == false) {
+            gameover();
+        }
+    }
 }
 
+function addPoints(points){
+
+}
+
+function rotate(dir, A) {
+    console.log("func rotate (ответственн Миша)");
+    //необходимо вывести матрицу, повёрнутую по часовой стрелке
+    //повернуть dir раз
+    return A;
+}
 function line_rotate(A){ //нужен для поворота на 180 (разворота)
-	var A_rotate=[]
+	var A_rotate=[];
 	for(var i = 0; i < 4; i++){
-		A_rotate.push([])
+		A_rotate.push([]);
 		for(var p = 0; p < 4; p++){
-			A_rotate[i].push(A[i][3-p])
+			A_rotate[i].push(A[i][3-p]);
 		}
 	}
-	return A_rotate
+	return A_rotate;
 }
 
 function angle_rotate(A,dir){
@@ -121,6 +133,6 @@ function calc_new_pos(A){
         addRandNum(B);//добавление в рандомное место 2 или 4
         return B;
     }
-    A1=shiftAndClap(A);
+    var A1=shiftAndClap(A);
     return A1;
 }
