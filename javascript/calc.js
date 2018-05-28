@@ -1,25 +1,12 @@
 function move (dir, A) {
     console.log("func move (зависит от всех троих)");
-    //console.log(dir);
-    //console.log(A);
-    if (dir == 0) {
-        var A3 = calc_new_pos(A);
-        draw(A3);
-    } else {
-        if (dir == 1 || dir == 3) {
-            var A1 = angle_rotate(A, dir)
-            var A2 = calc_new_pos(A1)
-            var A3 = angle_rotate(A, (dir + 2) % 4)
-        } else {
-            var A1 = line_rotate(A);
-            var A2 = calc_new_pos(A1)
-            var A3 = line_rotate(A2)
-        }
-        draw(A3);
-        var flag = check(A3);
-        if (flag == false) {
-            gameover();
-        }
+    var A1 = rotate(dir,A);
+    var A2=calc_new_pos(A1);
+    var A3=rotateBack(dir,A);
+    draw(A3);
+    var flag = check(A3);
+    if (flag == false) {
+        gameover();
     }
 }
 
@@ -31,19 +18,33 @@ function rotate(dir, A) {
     console.log("func rotate (ответственн Миша)");
     var T=[];
     for (var i=0; i<4; i++) {
-        T[i] = [0, 0, 0, 0]; //заполняем матрицу T пустыми значениями
+        T[i] = [];
+        for (var j=0; j<4; j++){
+            T[i][j]=0;
+        }
+        //T[i] = [0, 0, 0, 0]; //заполняем матрицу T пустыми значениями
     }
-    for (var i=0; i<4; i++) {
-        for (var j=0; j<4; j++) {
-            var j1=3-i;
-            var i1=j;
-            T[i1][j1] = A[i][j];
+    for (var k=0; k<dir; k++){
+        for (var i=0; i<4; i++) {
+            for (var j=0; j<4; j++) {
+                var j1=3-i;
+                var i1=j;
+                T[i1][j1] = A[i][j];
+            }
+        }
+        for (var i=0; i<4; i++) {
+            for (var j=0; j<4; j++){
+                A[i][j]=T[i][j]; //A=T (честное присваивание)
+            }
         }
     }
-    A=T;
     //необходимо вывести матрицу, повёрнутую по часовой стрелке
     //повернуть dir раз
     return A;
+}
+
+function rotateBack (dir, A){
+    return rotate(4-dir,A);
 }
 function line_rotate(A){ //нужен для поворота на 180 (разворота)
 	var A_rotate=[];
