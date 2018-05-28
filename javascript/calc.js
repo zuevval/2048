@@ -7,7 +7,7 @@ function move (dir, A) {
         if (dir == 1 || dir == 3) {
             var A1 = angle_rotate(A, dir)
             var A2 = calc_new_pos(A1)
-            var A3 = angle_rotate(A, (dir + 2) % 4)
+            var A3 = angle_rotate(A2, (dir + 2) % 4)
         } else {
             var A1 = line_rotate(A)
             var A2 = calc_new_pos(A1)
@@ -48,7 +48,7 @@ function angle_rotate(A,dir){
 		for(var i = 0; i < 4; i++){
 			A_rotate.push([])
 			for(var p = 0; p < 4; p++){
-				A_rotate.push(A[3-p][i])
+				A_rotate[i].push(A[3-p][i])
 			}
 		}
 	}
@@ -56,7 +56,7 @@ function angle_rotate(A,dir){
 		for(var i = 0; i < 4; i++){
 			A_rotate.push([])
 			for(var p = 0; p < 4; p++){
-				A_rotate.push(A[p][3-i])
+				A_rotate[i].push(A[p][3-i])
 			}
 		}
 	}
