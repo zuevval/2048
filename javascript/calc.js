@@ -1,66 +1,46 @@
 function move (dir, A) {
     console.log("func move (зависит от всех троих)");
-    if (dir == 0) {
-        var A3 = calc_new_pos(A);
-        draw(A3);
-    } else {
-        if (dir == 1 || dir == 3) {
-            var A1 = angle_rotate(A, dir)
-            var A2 = calc_new_pos(A1)
-            var A3 = angle_rotate(A, (dir + 2) % 4)
-        } else {
-            var A1 = line_rotate(A)
-            var A2 = calc_new_pos(A1)
-            var A3 = line_rotate(A2)
-        }
-        draw(A3);
-        var flag = check(A3);
-        if (flag == false) {
-            gameover();
-        }
+    var A1 = rotate(dir,A);
+    var A2=calc_new_pos(A1);
+    var A3=rotateBack(dir,A2);
+    draw(A3);
+    var flag = check(A3);
+    if (flag == false) {
+        gameover();
     }
 }
 
-function addPoints(points){
-
-}
 
 function rotate(dir, A) {
     console.log("func rotate (ответственн Миша)");
+    var T=[];
+    for (var i=0; i<4; i++) {
+        T[i] = [];
+        for (var j=0; j<4; j++){
+            T[i][j]=0; //заполняем матрицу T пустыми значениями
+        }
+    }
+    for (var k=0; k<dir; k++){
+        for (var i=0; i<4; i++) {
+            for (var j=0; j<4; j++) {
+                var j1=3-i;
+                var i1=j;
+                T[i1][j1] = A[i][j];
+            }
+        }
+        for (var i=0; i<4; i++) {
+            for (var j=0; j<4; j++){
+                A[i][j]=T[i][j]; //A=T (честное присваивание)
+            }
+        }
+    }
     //необходимо вывести матрицу, повёрнутую по часовой стрелке
     //повернуть dir раз
     return A;
 }
-function line_rotate(A){ //нужен для поворота на 180 (разворота)
-	var A_rotate=[];
-	for(var i = 0; i < 4; i++){
-		A_rotate.push([]);
-		for(var p = 0; p < 4; p++){
-			A_rotate[i].push(A[i][3-p]);
-		}
-	}
-	return A_rotate;
-}
 
-function angle_rotate(A,dir){
-	var A_rotate=[]
-	if (dir == 1){ // первый поворот для "вверх", второй для "вниз"
-		for(var i = 0; i < 4; i++){
-			A_rotate.push([])
-			for(var p = 0; p < 4; p++){
-				A_rotate.push(A[3-p][i])
-			}
-		}
-	}
-	if (dir == 3){ // первый поворот для "вниз", второй для "вверх"
-		for(var i = 0; i < 4; i++){
-			A_rotate.push([])
-			for(var p = 0; p < 4; p++){
-				A_rotate.push(A[p][3-i])
-			}
-		}
-	}
-	return A_rotate
+function rotateBack (dir, A){
+    return rotate(4-dir,A);
 }
 
 function check(A){
@@ -133,6 +113,15 @@ function calc_new_pos(A){
         addRandNum(B);//добавление в рандомное место 2 или 4
         return B;
     }
-    var A1=shiftAndClap(A);
-    return A1;
+    var A1=[];
+    for (var i=0; i<4; i++){
+        A1[i]=[];
+        for (var j=0; j<4; j++){
+            A1[i][j]=A[i][j]; //защита от изменнения A
+        }
+    }
+    //console.log(A1);
+    var A2=shiftAndClap(A1);
+    addPoints(Sum);
+    return A2;
 }

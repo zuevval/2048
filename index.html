@@ -10,6 +10,7 @@
 	<meta charset="UTF-8">
 	<title>2048 prime num</title>
 </head>
+<!--<div class id="textWarning"></div>-->
 <body onload="init()">
 <!--Первоначально вар-т с таблицей--
 В будущем лучше переделать с canvas--
@@ -58,5 +59,12 @@
 		<td></td>
 	</tr>
 </table>
-<div class>
+<table class="score">
+    <tr>
+        <td id="scoreText">Your score: </td>
+        <td id="scoreNum">0</td>
+        <td id="afterScoreText"></td>
+    </tr>
+    <tr><input type=button value="New Game" onclick=window.location.reload()></td></tr>
+</table>
 </body>

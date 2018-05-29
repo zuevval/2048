@@ -17,6 +17,16 @@ function draw(A){
 }
 function gameover(){
 	console.log("func gameover (ответственн Валера)");
+    afterScoreText.innerHTML='Game over!';
+    GameoverFlag=true;
+}
+
+function addPoints(points){
+    console.log("func addPoints (ответственн Валера)");
+    var score = scoreNum.innerHTML;
+    score=Number(score);
+    score+=points;
+    scoreNum.innerHTML=score;
 }
 
 function getMatrix(){
@@ -35,42 +45,3 @@ function getMatrix(){
 	return A;
 	//console.log(A);
 }
-/*function writeTdID (i,j, data){
-    console.log("func writeID (ответственн Валера)");
-	switch (10*(i+1)+(j+1)){
-		case 11: td11.innerHTML=data;
-		break;
-        case 12: td12.innerHTML=data;
-        break;
-        case 13: td13.innerHTML=data;
-        break;
-        case 14: td14.innerHTML=data;
-        break;
-        case 21: td21.innerHTML=data;
-            break;
-        case 22: td22.innerHTML=data;
-            break;
-        case 23: td23.innerHTML=data;
-            break;
-        case 24: td24.innerHTML=data;
-            break;
-        case 31: td31.innerHTML=data;
-            break;
-        case 32: td32.innerHTML=data;
-            break;
-        case 33: td33.innerHTML=data;
-            break;
-        case 34: td34.innerHTML=data;
-            break;
-        case 41: td41.innerHTML=data;
-            break;
-        case 42: td42.innerHTML=data;
-            break;
-        case 43: td43.innerHTML=data;
-            break;
-        case 44: td44.innerHTML=data;
-            break;
-		default: console.log("error");
-		break;
-	}
-}*/

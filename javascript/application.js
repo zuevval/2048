@@ -1,5 +1,6 @@
 function init () {
-	console.log("func init (ответственн Валера)")
+	console.log("func init (ответственн Валера)");
+	GameoverFlag=false;
 	var A=[];
 	//вставить заполнение двойками в случайных позициях
 	//var temp = [0, 0, 0, 0];
@@ -31,22 +32,26 @@ function main(){
 }*/
 
 function onrightpress () {
-	//var A=[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]];
+    //var A=[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]];
 	var A=getMatrix();
-	move (0,A); //ход направо
+    if (GameoverFlag == false)
+	    move (0,A); //ход направо
 }
 function onleftpress() {
     //var A=[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]];
     var A=getMatrix();
-    move (2,A);
+    if (GameoverFlag == false)
+        move (2,A);
 }
 function ondownress() {
     //var A=[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]];
     var A=getMatrix();
-    move (3,A);
+    if (GameoverFlag == false)
+        move (3,A);
 }
 function onuppress() {
     //var A=[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]];
     var A=getMatrix();
-    move (1,A);
+    if (GameoverFlag == false)
+        move (1,A);
 }
