@@ -6,4 +6,6 @@ function test(){
     var dir = 3;
     console.log(rotateBack(dir, rotate(dir, A)));
     //console.log(rotate(1,rotate(1,A)));
+    gameover();
+    //textWarning.innerHTML='Game over!';
 }

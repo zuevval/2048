@@ -2,7 +2,7 @@ function move (dir, A) {
     console.log("func move (зависит от всех троих)");
     var A1 = rotate(dir,A);
     var A2=calc_new_pos(A1);
-    var A3=rotateBack(dir,A);
+    var A3=rotateBack(dir,A2);
     draw(A3);
     var flag = check(A3);
     if (flag == false) {
@@ -10,9 +10,6 @@ function move (dir, A) {
     }
 }
 
-function addPoints(points){
-
-}
 
 function rotate(dir, A) {
     console.log("func rotate (ответственн Миша)");
@@ -20,9 +17,8 @@ function rotate(dir, A) {
     for (var i=0; i<4; i++) {
         T[i] = [];
         for (var j=0; j<4; j++){
-            T[i][j]=0;
+            T[i][j]=0; //заполняем матрицу T пустыми значениями
         }
-        //T[i] = [0, 0, 0, 0]; //заполняем матрицу T пустыми значениями
     }
     for (var k=0; k<dir; k++){
         for (var i=0; i<4; i++) {
@@ -45,40 +41,6 @@ function rotate(dir, A) {
 
 function rotateBack (dir, A){
     return rotate(4-dir,A);
-}
-function line_rotate(A){ //нужен для поворота на 180 (разворота)
-	var A_rotate=[];
-	for(var i = 0; i < 4; i++){
-		A_rotate.push([]);
-		for(var p = 0; p < 4; p++){
-			A_rotate[i].push(A[i][3-p]);
-		}
-	}
-	return A_rotate;
-}
-
-function angle_rotate(A,dir){
-    console.log(A);
-    console.log("function angle_rotate (ответственн Миша)")
-	var A_rotate=[]
-	if (dir == 1){ // первый поворот для "вверх", второй для "вниз"
-		for(var i = 0; i < 4; i++){
-			A_rotate.push([])
-			for(var p = 0; p < 4; p++){
-				A_rotate[i].push(A[3-p][i])
-			}
-		}
-	}
-	if (dir == 3){ // первый поворот для "вниз", второй для "вверх"
-		for(var i = 0; i < 4; i++){
-			A_rotate.push([])
-			for(var p = 0; p < 4; p++){
-				A_rotate[i].push(A[p][3-i])
-			}
-		}
-	}
-	console.log(A_rotate);
-	return A_rotate
 }
 
 function check(A){
@@ -151,6 +113,15 @@ function calc_new_pos(A){
         addRandNum(B);//добавление в рандомное место 2 или 4
         return B;
     }
-    var A1=shiftAndClap(A);
-    return A1;
+    var A1=[];
+    for (var i=0; i<4; i++){
+        A1[i]=[];
+        for (var j=0; j<4; j++){
+            A1[i][j]=A[i][j]; //защита от изменнения A
+        }
+    }
+    //console.log(A1);
+    var A2=shiftAndClap(A1);
+    addPoints(Sum);
+    return A2;
 }
