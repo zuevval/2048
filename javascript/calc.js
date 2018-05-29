@@ -66,6 +66,7 @@ function check(A){
 function calc_new_pos(A){
 	console.log("func calc_new_pos (ответственн Глеб)")
     //var Sum=0;
+	var check_var = 0
     function shift(B){ //функция сдвига
         for(var i=0;i<4;i++){
             for(var j=3;j>0;j--)//двигает с конца строки
@@ -75,9 +76,11 @@ function calc_new_pos(A){
                     B[i][j-1]=0;
                     j=3;
                 }
-
             }
         }
+		if (check_var != 1){
+			shiftAndClap(B)
+		}
         return B;
     }
     function addRandNum(B){//функия добавления в рандомное пустое место 2 или 4 с шансом 75/25
@@ -106,12 +109,14 @@ function calc_new_pos(A){
                     B[i][j]*=2;
                     B[i][j-1]=0;
                     Sum+=B[i][j];//добавление в общий счет суммы "схлопнутых" элементов
-                    B=shift(B);//после этого сдвигает вправо
 
                 }
             }
         }
+		check_var = 1
+        B=shift(B);//после этого сдвигает вправо
         addRandNum(B);//добавление в рандомное место 2 или 4
+		check_var = 0
         return B;
     }
     var A1=[];
@@ -122,6 +127,5 @@ function calc_new_pos(A){
         }
     }
     //console.log(A1);
-    var A2=shiftAndClap(A1);
+    var A2=shift(A);
     return A2;
-}
