@@ -3,6 +3,7 @@ function move (dir, A) {
     var A1 = rotate(dir,A);
     var A2=calc_new_pos(A1);
     var A3=rotateBack(dir,A2);
+    addPoints(Sum);
     draw(A3);
     var flag = check(A3);
     if (flag == false) {
@@ -64,7 +65,7 @@ function check(A){
 
 function calc_new_pos(A){
 	console.log("func calc_new_pos (ответственн Глеб)")
-    var Sum=0;
+    //var Sum=0;
     function shift(B){ //функция сдвига
         for(var i=0;i<4;i++){
             for(var j=3;j>0;j--)//двигает с конца строки
@@ -122,6 +123,5 @@ function calc_new_pos(A){
     }
     //console.log(A1);
     var A2=shiftAndClap(A1);
-    addPoints(Sum);
     return A2;
 }

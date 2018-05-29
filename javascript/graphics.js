@@ -23,10 +23,11 @@ function gameover(){
 
 function addPoints(points){
     console.log("func addPoints (ответственн Валера)");
-    var score = scoreNum.innerHTML;
+   /* var score = scoreNum.innerHTML;
     score=Number(score);
     score+=points;
-    scoreNum.innerHTML=score;
+    scoreNum.innerHTML=score;*/
+    scoreNum.innerHTML=points;
 }
 
 function getMatrix(){

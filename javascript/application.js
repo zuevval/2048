@@ -1,6 +1,9 @@
+var Sum=0;
+var GameoverFlag=false;
 function init () {
 	console.log("func init (ответственн Валера)");
-	GameoverFlag=false;
+    Sum=0;
+    GameoverFlag=false;
 	var A=[];
 	//вставить заполнение двойками в случайных позициях
 	//var temp = [0, 0, 0, 0];
